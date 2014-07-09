@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gerermacoloc.app.form.generic.GenericForm;
 import com.gerermacoloc.app.repo.generic.GenericDao;
 
 /**
@@ -16,7 +15,7 @@ import com.gerermacoloc.app.repo.generic.GenericDao;
  *            the form allowing to validate the input
  */
 @Transactional
-public abstract class GenericServiceImpl<T, F extends GenericForm> implements GenericService<T, F> {
+public abstract class GenericServiceImpl<T> implements GenericService<T> {
 
     protected GenericDao<T> dao;
 
@@ -29,8 +28,7 @@ public abstract class GenericServiceImpl<T, F extends GenericForm> implements Ge
      * {@inheritDoc}
      */
     @Override
-    public void create(F form) throws Exception {
-	    T entity = this.populateEntity(null, form);
+    public void create(T entity) throws Exception {
 	    this.dao.create(entity);
     }
 
@@ -65,15 +63,6 @@ public abstract class GenericServiceImpl<T, F extends GenericForm> implements Ge
     public List<T> list() {
         return this.dao.findAll();
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void update(final T element, final F form) {
-        this.populateEntity(element, form);
-        this.dao.update(element);
-    }
     
     /**
      * {@inheritDoc}
@@ -82,27 +71,6 @@ public abstract class GenericServiceImpl<T, F extends GenericForm> implements Ge
     public void update(final T element) {
         this.dao.update(element);
     }
-
-    /**
-     * Populate an entity with a form content.
-     * 
-     * @param element
-     *            the entity to populate
-     * @param form
-     *            the form containing the data
-     */
-    protected abstract T populateEntity(T entity, F form);
-
-    /**
-     * Populate a form with an entity content.
-     * 
-     * @param form
-     *            the form to populate
-     * 
-     * @param element
-     *            the entity containing the data
-     */
-    protected abstract void populateForm(F form, T element);
     
     /**
      * Verify all the business rules on that element

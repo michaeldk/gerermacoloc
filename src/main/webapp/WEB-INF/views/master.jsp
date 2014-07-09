@@ -1,40 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title><tiles:insertAttribute name="title" ignore="true" /></title>
-		<link href="http://fonts.googleapis.com/css?family=Signika:400,600,700" rel="stylesheet" type="text/css" />
-		<link href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet" type="text/css" media="all" />
-		<link href="<c:url value="/css/default.css"/>" rel="stylesheet" type="text/css" media="all" />
-		<script type="text/javascript" src="<c:url value="/js/jquery-1.7.1.min.js"/>"></script>
-		<script type="text/javascript" src="<c:url value="/js/jquery.dropotron-1.0.js"/>"></script>
-		<script type="text/javascript" src="<c:url value="/js/jquery.form.min.js"/>"></script>
-		<script type="text/javascript" src="<c:url value="/js/init.js"/>"></script>
-		<!--[if lte IE 7]>
-		<link href="ie6.css" rel="stylesheet" type="text/css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content=""/>
+		<meta name="author" content=""/>
+		<link rel="shortcut icon" href="resources/img/favicon.ico"/>
+
+		<title>Gérer Ma Coloc - Vue d'ensemble</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+
+		<!-- Custom styles for this template -->
+		<link href="resources/css/dashboard.css" rel="stylesheet"/>
+
+		<!-- Just for debugging purposes. Don't actually copy this line! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-<body class="homepage">
-<div id="wrapper">
-	<tiles:insertAttribute name="header"/>
-	<div id="banner" class="container">
-		<div id="image-banner"><img src="<c:url value="/images/homepage01.jpg"/>" width="920" height="250" alt="" /></div>
-		<div id="banner-caption">
-			<h2>Pour que votre coloc'</h2>
-			<p class="text1">ne vous regarde plus</p>
-			<p class="text2">avec une envie de meurtre</p>
-		</div>
-	</div>
-	<div id="page" class="container">
-		<tiles:insertAttribute name="body"/>
-	</div>
-</div>
-<tiles:insertAttribute name="footer"/>
-</body>
+	<body>
+		<tiles:insertAttribute name="header"/>
+	    <div class="container-fluid">
+	    	<div class="row">
+	    		<tiles:insertAttribute name="sidebar"/>
+	    		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	    			<tiles:insertAttribute name="body"/>
+	    		</div>
+			</div>
+	    </div>
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="resources/js/jquery.min.js"></script>
+	    <script src="resources/js/bootstrap.min.js"></script>
+	    <script src="resources/js/docs.min.js"></script>
+	</body>
 </html>

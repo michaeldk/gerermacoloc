@@ -2,8 +2,6 @@ package com.gerermacoloc.app.service.generic;
 
 import java.util.List;
 
-import com.gerermacoloc.app.form.generic.GenericForm;
-
 /**
  * A generic service template providing an API for CUD operations.
  * 
@@ -12,7 +10,7 @@ import com.gerermacoloc.app.form.generic.GenericForm;
  * @param <F>
  *            a form type
  */
-public interface GenericService<T, F extends GenericForm> {
+public interface GenericService<T> {
 
     /**
      * Create an entity from a form.
@@ -21,14 +19,7 @@ public interface GenericService<T, F extends GenericForm> {
      *            the form containing the entity attributes
      * @throws Exception 
      */
-    void create(F form) throws Exception;
-
-    /**
-     * Create a form.
-     * 
-     * @return a new form
-     */
-    F createForm();
+    void create(T entity) throws Exception;
 
     /**
      * Delete an entity
@@ -69,14 +60,6 @@ public interface GenericService<T, F extends GenericForm> {
      *            the entity to update
      * @param form
      *            the form containing the new entity attributes
-     */
-    void update(T element, F form);
-    
-    /**
-     * Update an entity.
-     * 
-     * @param element
-     *            the entity to update
      */
     void update(T element);
 }

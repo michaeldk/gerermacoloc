@@ -1,33 +1,28 @@
 package com.gerermacoloc.app.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gerermacoloc.app.controller.generic.GenericControllerImpl;
-import com.gerermacoloc.app.domain.Colocation;
-import com.gerermacoloc.app.form.CreateColocationForm;
-import com.gerermacoloc.app.service.contract.ColocationService;
+import com.gerermacoloc.app.service.contract.TaskService;
 
 /**
  * The tasks controller.
  */
 @Controller
 @RequestMapping("/tasks")
-public class TaskController extends GenericControllerImpl<Colocation, CreateColocationForm> {
+public class TaskController extends GenericControllerImpl {
 
     @Autowired
-    public TaskController(final ColocationService service) {
-        super("tasks", Colocation.class.getSimpleName().toLowerCase(), service);
-    }
-    
-    @Override
-    protected void loadEntities(final Model model) {
-        super.loadEntities(model);
-    }
+    private TaskService service;
 
-    @Override
-    protected void populateLists(final Model model) {
-    }
+	@Override
+	public String defaultHome(Model model, HttpSession session) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

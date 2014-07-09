@@ -12,8 +12,6 @@ public class MasterPreparer implements ViewPreparer {
    @Override
    public void execute(TilesRequestContext tilesContext, AttributeContext attributeContext) {
 
-      // You can add result to your request scope:
-      //tilesContext.getRequestScope().put("test", "test");
       Roommate roommate = (Roommate) tilesContext.getSessionScope().get("user");
       if (roommate != null) {
     	  tilesContext.getRequestScope().put("user", roommate);

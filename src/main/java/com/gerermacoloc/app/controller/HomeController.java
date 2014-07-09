@@ -12,6 +12,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method=RequestMethod.GET)
 	public String home(final Locale locale, final Model model) {
-		return "index";
+		return "dashboard";
 	}
 }

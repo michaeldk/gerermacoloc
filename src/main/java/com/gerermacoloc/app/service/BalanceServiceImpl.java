@@ -4,36 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gerermacoloc.app.domain.Balance;
-import com.gerermacoloc.app.form.CreateBalanceForm;
 import com.gerermacoloc.app.repo.contract.BalanceDao;
 import com.gerermacoloc.app.service.contract.BalanceService;
 import com.gerermacoloc.app.service.generic.GenericServiceImpl;
 
 @Service
-public class BalanceServiceImpl extends GenericServiceImpl<Balance, CreateBalanceForm> implements BalanceService {
+public class BalanceServiceImpl extends GenericServiceImpl<Balance> implements BalanceService {
 
     @Autowired
     public BalanceServiceImpl(final BalanceDao dao) {
         super(dao);
-    }
-
-    @Override
-    public CreateBalanceForm createForm() {
-        return new CreateBalanceForm();
-    }
-
-    @Override
-    protected Balance populateEntity(Balance element, CreateBalanceForm form) {
-    	if (element == null) {
-    		element = new Balance();
-    	}
-    	// TODO Auto-generated method stub
-    	return element;
-    }
-
-    @Override
-    protected void populateForm(final CreateBalanceForm form, final Balance element) {
-    	// TODO Auto-generated method stub
     }
 	
 	public void verifyBusinessRules(Balance Balance) throws Exception {
@@ -41,8 +21,7 @@ public class BalanceServiceImpl extends GenericServiceImpl<Balance, CreateBalanc
 	}
 
 	@Override
-	public void create(CreateBalanceForm form) throws Exception {
+	public void create(Balance entity) throws Exception {
 		// TODO Auto-generated method stub
 	}
-
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.gerermacoloc.app.controller.generic.GenericControllerImpl;
 import com.gerermacoloc.app.controller.util.SessionData;
 import com.gerermacoloc.app.domain.Colocation;
-import com.gerermacoloc.app.form.CreateColocationForm;
 import com.gerermacoloc.app.service.contract.ColocationService;
 
 /**
@@ -19,12 +18,10 @@ import com.gerermacoloc.app.service.contract.ColocationService;
  */
 @Controller
 @RequestMapping("/coloc")
-public class ColocationController extends GenericControllerImpl<Colocation, CreateColocationForm> {
+public class ColocationController extends GenericControllerImpl {
 
     @Autowired
-    public ColocationController (final ColocationService service) {
-        super("colocations", Colocation.class.getSimpleName().toLowerCase(), service);
-    }
+    private ColocationService service;
     
     /**
      * Retrieves the colocation ID from the user's session
@@ -37,16 +34,6 @@ public class ColocationController extends GenericControllerImpl<Colocation, Crea
     		return "redirect:/coloc/create";
     	}
     	model.addAttribute("coloc", coloc);
-    	loadEntities(model);
-    	return "display/" + this.name;
-    }
-
-    @Override
-    protected void loadEntities (final Model model) {
-        super.loadEntities(model);
-    }
-
-    @Override
-    protected void populateLists (final Model model) {
+    	return "colocation";
     }
 }
