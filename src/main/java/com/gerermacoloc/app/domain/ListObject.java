@@ -1,5 +1,7 @@
 package com.gerermacoloc.app.domain;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +29,12 @@ public class ListObject extends Versionable {
 	@NotNull
 	@OneToOne
 	private Roommate creater;
+	
+	@NotNull
+	private Calendar dateCreated;
+	
+	@NotNull
+	private Calendar dateDone;
 	
 	public ListObject() {
 		super();
@@ -62,6 +70,22 @@ public class ListObject extends Versionable {
 
 	public void setCreater(Roommate creater) {
 		this.creater = creater;
+	}
+
+	public Calendar getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Calendar dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Calendar getDateDone() {
+		return dateDone;
+	}
+
+	public void setDateDone(Calendar dateDone) {
+		this.dateDone = dateDone;
 	}
 
 }

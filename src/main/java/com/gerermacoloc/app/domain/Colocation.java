@@ -18,6 +18,16 @@ public class Colocation extends Versionable {
 	
 	@NotNull
 	private String name;
+	
+	private String adresse;
+	
+	private String email;
+	
+	private String proprietaire;
+	
+	private String adresseProprietaire;
+	
+	private String emailProprietaire;
 
 	public Colocation() {
 		super();
@@ -37,5 +47,45 @@ public class Colocation extends Versionable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(String proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	public String getAdresseProprietaire() {
+		return adresseProprietaire;
+	}
+
+	public void setAdresseProprietaire(String adresseProprietaire) {
+		this.adresseProprietaire = adresseProprietaire;
+	}
+
+	public String getEmailProprietaire() {
+		return emailProprietaire;
+	}
+
+	public void setEmailProprietaire(String emailProprietaire) {
+		this.emailProprietaire = emailProprietaire;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

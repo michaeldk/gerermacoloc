@@ -1,11 +1,19 @@
 package com.gerermacoloc.app.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Entity implementation class for Entity: User
@@ -33,6 +41,11 @@ public class Roommate extends Versionable {
 	
 	@NotNull
 	private String password;
+	
+	@NotEmpty
+	@ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+	private List<String> roles;
 	
 	@OneToOne
 	private Colocation colocation;
@@ -89,12 +102,42 @@ public class Roommate extends Versionable {
 		this.colocation = colocation;
 	}
 	
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString() {
-		return this.firstName;
+		return this.firstName + " " + this.lastName;
 	}
 	
-	public String toStringFull() {
-		return this.firstName + " " + this.lastName;
+	public boolean hasRole(String role) {
+		return this.roles != null && this.roles.contains(role);
+	}
+	
+	public void addRole(String role) {
+		if (this.roles == null) {
+			this.roles = new ArrayList<String>();
+		}
+		this.roles.add(role);
+	}
+	
+	public void removeRole(String role) {
+		if (this.roles == null) {
+			return;
+		}
+		this.roles.remove(role);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) return false;
+		if (!(obj instanceof Roommate)) return false;
+		Roommate roommate = (Roommate) obj;
+		return this.id == roommate.getId();
 	}
 }

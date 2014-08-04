@@ -30,6 +30,10 @@
 		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		
+		<script src="resources/js/jquery.min.js"></script>
+	    <script src="resources/js/bootstrap.min.js"></script>
+	    <script src="resources/js/docs.min.js"></script>
 	</head>
 	<body>
 		<tiles:insertAttribute name="header"/>
@@ -41,11 +45,5 @@
 	    		</div>
 			</div>
 	    </div>
-	    <!-- Bootstrap core JavaScript
-	    ================================================== -->
-	    <!-- Placed at the end of the document so the pages load faster -->
-	    <script src="resources/js/jquery.min.js"></script>
-	    <script src="resources/js/bootstrap.min.js"></script>
-	    <script src="resources/js/docs.min.js"></script>
 	</body>
 </html>

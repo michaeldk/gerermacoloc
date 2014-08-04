@@ -8,13 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gerermacoloc.app.controller.generic.GenericControllerImpl;
+import com.gerermacoloc.app.controller.util.SessionData;
+import com.gerermacoloc.app.domain.Colocation;
+import com.gerermacoloc.app.domain.Roommate;
 import com.gerermacoloc.app.service.contract.RoommateListService;
 
 /**
  * The roommateLists controller.
  */
 @Controller
-@RequestMapping("/roommateLists")
+@RequestMapping("/meslistes")
 public class RoommateListController extends GenericControllerImpl {
 
     @Autowired
@@ -22,7 +25,16 @@ public class RoommateListController extends GenericControllerImpl {
 
 	@Override
 	public String defaultHome(Model model, HttpSession session) {
-		// TODO Auto-generated method stub
-		return null;
+		Roommate roommate = SessionData.findRoommate(session);
+    	if (roommate == null) {
+    		return "redirect:/welcome";
+    	} 
+    	Colocation coloc = roommate.getColocation();
+    	if (coloc == null) {
+    		return "redirect:/coloc";
+    	}
+    	model.addAttribute("tobuylist", this.service.findToBuyList(roommate));
+    	model.addAttribute("listes", this.service.findUserCreatedLists(roommate));
+		return "meslistes";
 	}
 }

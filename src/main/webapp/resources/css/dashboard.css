@@ -176,3 +176,11 @@ h2 > select {
 .info-p {
 	padding: 15px;
 }
+
+#createColocForm {
+	width: 40%;
+}
+
+.hidden {
+	display: none;
+}

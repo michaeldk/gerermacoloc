@@ -28,7 +28,18 @@ public class Task extends Versionable {
 	@OneToOne
 	private Colocation colocation;
 	
+	@NotNull
+	@OneToOne
+	private Roommate creator;
+	
 	private Rotation rotation;
+	
+	private boolean recurrent;
+	
+	private boolean privateTask;
+	
+	@OneToOne
+	private TaskOrder currentTaskOrder;
 	
 	public Task() {
 		super();
@@ -72,5 +83,37 @@ public class Task extends Versionable {
 
 	public void setRotation(Rotation rotation) {
 		this.rotation = rotation;
+	}
+
+	public TaskOrder getCurrentTaskOrder() {
+		return currentTaskOrder;
+	}
+
+	public void setCurrentTaskOrder(TaskOrder currentTaskOrder) {
+		this.currentTaskOrder = currentTaskOrder;
+	}
+
+	public boolean isRecurrent() {
+		return recurrent;
+	}
+
+	public void setRecurrent(boolean recurrent) {
+		this.recurrent = recurrent;
+	}
+
+	public Roommate getCreator() {
+		return creator;
+	}
+
+	public void setCreator(Roommate creator) {
+		this.creator = creator;
+	}
+
+	public boolean isPrivateTask() {
+		return privateTask;
+	}
+
+	public void setPrivateTask(boolean privateTask) {
+		this.privateTask = privateTask;
 	}
 }

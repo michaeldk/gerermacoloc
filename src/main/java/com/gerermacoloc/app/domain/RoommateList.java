@@ -35,6 +35,9 @@ public class RoommateList extends Versionable {
     @NotEmpty
     private String name;
     
+    @NotEmpty
+    private String type;
+    
     public RoommateList() {
 		super();
 	}
@@ -78,5 +81,39 @@ public class RoommateList extends Versionable {
 			}
 		}
 		return true;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public int getNbrTodoItems() {
+		int nbr = 0;
+		if (this.list == null) {
+			return 0;
+		}
+		for (ListObject obj : this.list) {
+			if (!obj.isDone()) {
+				nbr++;
+			}
+		}
+		return nbr;
+	}
+	
+	public int getNbrDoneItems() {
+		int nbr = 0;
+		if (this.list == null) {
+			return 0;
+		}
+		for (ListObject obj : this.list) {
+			if (obj.isDone()) {
+				nbr++;
+			}
+		}
+		return nbr;
 	}
 }

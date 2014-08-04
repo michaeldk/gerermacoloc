@@ -8,21 +8,23 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * A generic DAO implementation providing CUD methods.
  * 
  * @param <T>
  *            an entity type
  */
+@Transactional
 public class GenericDaoImpl<T> implements GenericDao<T> {
 
-    @PersistenceContext
+    @PersistenceContext(unitName="GererMaColoc")
     protected EntityManager entityManager;
 
     private Class<T> clazz;
 
     public GenericDaoImpl(final Class<T> clazz) {
-
         this.clazz = clazz;
     }
 
@@ -31,7 +33,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
      */
     @Override
     public void create(final T element) {
-
         this.entityManager.persist(element);
     }
 
@@ -40,7 +41,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
      */
     @Override
     public void delete(final T element) {
-
         this.entityManager.remove(element);
     }
 
@@ -49,7 +49,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
      */
     @Override
     public List<T> findAll() {
-
         final CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
         final CriteriaQuery<T> criteria = builder.createQuery(this.clazz);
         final Root<T> element = criteria.from(this.clazz);
@@ -63,7 +62,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
      */
     @Override
     public T findById(final int id) {
-
         return this.entityManager.find(this.clazz, id);
     }
 
@@ -72,7 +70,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
      */
     @Override
     public void update(final T element) {
-
         this.entityManager.merge(element);
     }
 }

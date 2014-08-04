@@ -4,18 +4,36 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 	<definition name="base.definition" preparer="com.gerermacoloc.app.viewpreparers.MasterPreparer" template="/WEB-INF/views/master.jsp">
-		<put-attribute name="title" value="" />
-		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/sidebar.jsp" />
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="sidebar" value="/WEB-INF/views/sidebar.jsp"/>
 	</definition>
 	<definition name="dashboard" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/views/dashboard.jsp" />
+		<put-attribute name="title" value="Gerer Ma Coloc - Vue d'ensemble"/>
+		<put-attribute name="body" value="/WEB-INF/views/pages/dashboard.jsp"/>
 	</definition>
 	<definition name="colocation" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/views/pages/colocation.jsp" />
+		<put-attribute name="title" value="Gerer Ma Coloc - Colocation"/>
+		<put-attribute name="body" value="/WEB-INF/views/pages/colocation.jsp"/>
 	</definition>
-	<definition name="create/roommate" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/views/create/roommate.jsp" />
+	<definition name="meslistes" extends="base.definition">
+		<put-attribute name="title" value="Gerer Ma Coloc - Mes listes"/>
+		<put-attribute name="body" value="/WEB-INF/views/pages/meslistes.jsp"/>
+	</definition>
+	<definition name="taches" extends="base.definition">
+		<put-attribute name="title" value="Gerer Ma Coloc - Les tâches"/>
+		<put-attribute name="body" value="/WEB-INF/views/pages/taches.jsp"/>
+	</definition>
+	<definition name="achatsafaire" extends="base.definition">
+		<put-attribute name="title" value="Gerer Ma Coloc - Les achats à faire"/>
+		<put-attribute name="body" value="/WEB-INF/views/pages/achatsafaire.jsp"/>
+	</definition>
+	<definition name="operations" extends="base.definition">
+		<put-attribute name="title" value="Gerer Ma Coloc - Les opérations à faire"/>
+		<put-attribute name="body" value="/WEB-INF/views/pages/operations.jsp"/>
+	</definition>
+	
+	<definition name="welcome" template="/WEB-INF/views/pages/welcome.jsp">
 	</definition>
 </tiles-definitions>

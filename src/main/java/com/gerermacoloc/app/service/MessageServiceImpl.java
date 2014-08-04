@@ -1,8 +1,11 @@
 package com.gerermacoloc.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gerermacoloc.app.domain.Colocation;
 import com.gerermacoloc.app.domain.Message;
 import com.gerermacoloc.app.repo.contract.MessageDao;
 import com.gerermacoloc.app.service.contract.MessageService;
@@ -17,6 +20,11 @@ public class MessageServiceImpl extends GenericServiceImpl<Message> implements M
     }
 	
 	public void verifyBusinessRules(Message message) throws Exception {
+	}
+
+	@Override
+	public List<Message> findMessages(Colocation coloc, int page) {
+		return ((MessageDao) this.dao).findMessages(coloc, page);
 	}
 
 }

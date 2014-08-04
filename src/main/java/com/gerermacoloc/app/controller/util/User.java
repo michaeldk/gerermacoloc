@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class User {
  
     private String userName;
- 
     private String password;
  
     //Important, when using JSON, used by Jackson Library

@@ -22,7 +22,7 @@ public class MessageSeenBy extends Versionable {
 	
 	@NotNull
 	@OneToOne
-	private Roommate roommate;
+	private Roommate author;
 	
 	@NotNull
 	private Calendar date;
@@ -39,12 +39,12 @@ public class MessageSeenBy extends Versionable {
 		this.id = id;
 	}
 
-	public Roommate getRoommate() {
-		return roommate;
+	public Roommate getAuthor() {
+		return author;
 	}
 
-	public void setRoommate(Roommate user) {
-		this.roommate = user;
+	public void setAuthor(Roommate author) {
+		this.author = author;
 	}
 
 	public Calendar getDate() {

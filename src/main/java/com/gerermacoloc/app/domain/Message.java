@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class Message extends Versionable implements Notification {
+public class Message extends Versionable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -102,15 +102,4 @@ public class Message extends Versionable implements Notification {
 	public void setDate(Calendar date) {
 		this.date = date;
 	}
-
-	@Override
-	public NotificationType getType() {
-		return NotificationType.MESSAGE;
-	}
-
-	@Override
-	public String getSmallContent() {
-		return author + " a posté un message sur le mur de la coloc'";
-	}
-
 }

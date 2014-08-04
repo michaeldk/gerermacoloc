@@ -14,7 +14,7 @@ import com.gerermacoloc.app.service.contract.PaymentService;
  * The payments controller.
  */
 @Controller
-@RequestMapping("/payments")
+@RequestMapping("/paiements")
 public class PaymentController extends GenericControllerImpl {
 
     @Autowired

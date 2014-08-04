@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * Comments on messages
  */
 @Entity
-public class Comment extends Versionable implements Notification {
+public class Comment extends Versionable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -89,15 +89,5 @@ public class Comment extends Versionable implements Notification {
 	 */
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	@Override
-	public NotificationType getType() {
-		return NotificationType.COMMENT;
-	}
-
-	@Override
-	public String getSmallContent() {
-		return author + " a laissé un commentaire sur le mur de la coloc'";
 	}
 }

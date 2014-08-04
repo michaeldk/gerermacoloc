@@ -25,10 +25,6 @@ public class PaymentParticipation extends Versionable {
 	
 	@OneToOne
 	private Roommate roommate;
-	
-	private double amount;
-	
-	private boolean done;
 
 	public PaymentParticipation() {
 		super();
@@ -56,21 +52,5 @@ public class PaymentParticipation extends Versionable {
 
 	public void setRoommate(Roommate user) {
 		this.roommate = user;
-	}
-
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
-	public boolean isDone() {
-		return done;
-	}
-
-	public void setDone(boolean done) {
-		this.done = done;
 	}
 }

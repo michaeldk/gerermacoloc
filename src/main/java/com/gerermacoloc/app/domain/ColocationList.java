@@ -19,20 +19,17 @@ public class ColocationList extends Versionable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(generator = "colocationlist_sequence_gen")
-    @SequenceGenerator(name = "colocationlist_sequence_gen", sequenceName = "colocationlist_id_seq")
+    @GeneratedValue(generator = "coloclist_sequence_gen")
+    @SequenceGenerator(name = "coloclist_sequence_gen", sequenceName = "coloclist_id_seq")
 	private int id;
 	
-    @OneToMany
+	@OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
-	private  List<ListObject> list;
+	private List<ListObject> list;
     
     @NotNull
 	@OneToOne
 	private Colocation colocation;
-    
-    @NotNull
-    private String name;
     
     public ColocationList() {
 		super();
@@ -61,21 +58,30 @@ public class ColocationList extends Versionable {
 	public void setColocation(Colocation colocation) {
 		this.colocation = colocation;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
-	public boolean isDone() {
-		for (ListObject listObject : this.list) {
-			if (!listObject.isDone()) {
-				return false;
+	public int getNbrTodoItems() {
+		int nbr = 0;
+		if (this.list == null) {
+			return 0;
+		}
+		for (ListObject obj : this.list) {
+			if (!obj.isDone()) {
+				nbr++;
 			}
 		}
-		return true;
+		return nbr;
+	}
+	
+	public int getNbrDoneItems() {
+		int nbr = 0;
+		if (this.list == null) {
+			return 0;
+		}
+		for (ListObject obj : this.list) {
+			if (obj.isDone()) {
+				nbr++;
+			}
+		}
+		return nbr;
 	}
 }

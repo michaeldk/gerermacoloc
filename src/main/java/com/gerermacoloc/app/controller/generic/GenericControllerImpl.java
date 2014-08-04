@@ -43,7 +43,7 @@ public abstract class GenericControllerImpl implements GenericController {
      *            the exception
      */
     protected void loadErrorContext(final Model model, final Exception exception) {
-        model.addAttribute("exception", exception.getMessage());
+    	model.addAttribute("exception", exception.getMessage());
     }
     
     @Override

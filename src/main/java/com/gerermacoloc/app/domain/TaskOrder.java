@@ -38,14 +38,11 @@ public class TaskOrder extends Versionable {
 	@OneToOne
 	private Task task;
 	
-	@NotNull
 	@OneToOne
 	private TaskOrder nextTaskOrder;
 	
 	private boolean done;
 	
-	private int daysLeft;
-
 	public TaskOrder() {
 		super();
 	}
@@ -96,13 +93,5 @@ public class TaskOrder extends Versionable {
 
 	public void setPings(List<Ping> pings) {
 		this.pings = pings;
-	}
-
-	public int getDaysLeft() {
-		return daysLeft;
-	}
-
-	public void setDaysLeft(int daysLeft) {
-		this.daysLeft = daysLeft;
 	}
 }
